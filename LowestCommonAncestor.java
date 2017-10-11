@@ -1,11 +1,11 @@
 
 public class LowestCommonAncestor {
 	
-	private Node head;
+	public Node head;
 	
-	private class Node{
+	public class Node{
 		private char c;
-		private Node left, right, parent;
+		public Node left, right, parent;
 		private int n;
 	}
 	
@@ -18,8 +18,37 @@ public class LowestCommonAncestor {
 		this.head = head;
 	}
 	
-	public char returnKey(){
-		return head.c;
+	public char returnKey(Node node){
+		return node.c;
+	}
+	
+	public void addNode(char c){
+		Node newNode = new Node();
+		newNode.c = c;
+		newNode.left = null;
+		newNode.right = null;	
+		addNode(newNode, head);
+	}
+	
+	private void addNode(Node newNode, Node head){
+		if(newNode.c < head.c){
+			if(head.left == null){
+				head.left = newNode;
+				newNode.parent = head;
+			}
+			else{
+				addNode(newNode, head.left);
+			}
+		}
+		else{
+			if(head.right == null){
+				head.right = newNode;
+				newNode.parent = head;
+			}
+			else{
+				addNode(newNode, head.right);
+			}
+		}
 	}
 	
 	
