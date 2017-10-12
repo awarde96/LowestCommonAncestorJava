@@ -24,13 +24,33 @@ public class LowestCommonAncestorTest {
 		lca.addNode('a');
 		assertEquals("Add node A", 'a', lca.returnKey(lca.head.left));
 		lca.addNode('h');
-		assertEquals("Add node A", 'h', lca.returnKey(lca.head.right));
+		assertEquals("Add node h", 'h', lca.returnKey(lca.head.right));
 		lca.addNode('b');
-		assertEquals("Add node A", 'b', lca.returnKey(lca.head.left.right));
+		assertEquals("Add node b", 'b', lca.returnKey(lca.head.left.right));
 		lca.addNode('f');
-		assertEquals("Add node A", 'f', lca.returnKey(lca.head.right.left));
+		assertEquals("Add node f", 'f', lca.returnKey(lca.head.right.left));
 		lca.addNode('k');
-		assertEquals("Add node A", 'k', lca.returnKey(lca.head.right.right));
+		assertEquals("Add node k", 'k', lca.returnKey(lca.head.right.right));
+	}
+	
+	@Test
+	public void testFindNode(){
+		LowestCommonAncestor lca = new LowestCommonAncestor();
+		lca.createHead('d');
+		assertEquals("Find head Node", 'd', lca.returnKey(lca.findNode('d')));
+		lca.addNode('a');
+		assertEquals("Find left Node", 'a', lca.returnKey(lca.findNode('a')));
+		lca.addNode('h');
+		assertEquals("Find right Node", 'h', lca.returnKey(lca.findNode('h')));
+		lca.addNode('b');
+		assertEquals("Find b Node", 'b', lca.returnKey(lca.findNode('b')));
+		lca.addNode('f');
+		assertEquals("Find f Node", 'f', lca.returnKey(lca.findNode('f')));
+		lca.addNode('l');
+		lca.addNode('c');
+		lca.addNode('v');
+		assertEquals("Find v Node", 'v', lca.returnKey(lca.findNode('v')));
+		
 	}
 
 }

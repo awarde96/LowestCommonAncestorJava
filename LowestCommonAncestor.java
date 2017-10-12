@@ -51,6 +51,42 @@ public class LowestCommonAncestor {
 		}
 	}
 	
+	public Node findNode(char c){
+		if(c == head.c){
+			return head;
+		}
+		else {
+			return findNode(c, head);
+		}
+	}
+	
+	private Node findNode(char c, Node head){
+		Node ret = null;
+		if(head.left != null){
+			if (head.left.c == c){
+				return head.left;
+			}
+			else{
+				ret = findNode(c, head.left);
+				if(ret != null){
+					return ret;
+				}
+			}
+		}
+		if(head.right != null){
+			if(head.right.c == c){
+				return head.right;
+			}
+			else{
+				ret = findNode(c, head.right);
+				if(ret != null){
+					return ret;
+				}
+			}
+		}
+		return null;
+	}
+	
 	
 
 	public String helloWorld(){
