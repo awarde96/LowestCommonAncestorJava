@@ -87,6 +87,15 @@ public class LowestCommonAncestor {
 		return null;
 	}
 	
+	public int depth(char c){
+		int depth = 0;
+		Node node = findNode(c);
+		while(node.parent != null){
+			depth++;
+			node = node.parent;
+		}
+		return depth;
+	}
 	
 
 	public String helloWorld(){

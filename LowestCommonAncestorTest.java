@@ -50,7 +50,19 @@ public class LowestCommonAncestorTest {
 		lca.addNode('c');
 		lca.addNode('v');
 		assertEquals("Find v Node", 'v', lca.returnKey(lca.findNode('v')));
-		
+	}
+	
+	@Test
+	public void testDepth(){
+		LowestCommonAncestor lca = new LowestCommonAncestor();
+		lca.createHead('d');
+		assertEquals("Depth of head", 0, lca.depth('d'));
+		lca.addNode('a');
+		assertEquals("Depth of a", 1, lca.depth('a'));
+		lca.addNode('b');
+		assertEquals("Depth of b", 2, lca.depth('b'));
+		lca.addNode('c');
+		assertEquals("Depth of c", 3, lca.depth('c'));
 	}
 
 }
