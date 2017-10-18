@@ -65,4 +65,19 @@ public class LowestCommonAncestorTest {
 		assertEquals("Depth of c", 3, lca.depth('c'));
 	}
 
+	
+	@Test
+	public void testLCA(){
+		LowestCommonAncestor lca = new LowestCommonAncestor();
+		lca.createHead('f');		
+		assertEquals("Should return head", lca.findNode('f'), lca.lowestCommonAncestor(lca.findNode('f'), lca.findNode('f'), null));
+		lca.addNode('c');
+		lca.addNode('k');
+		assertEquals("Should return head", lca.findNode('f'), lca.lowestCommonAncestor(lca.findNode('f'), lca.findNode('c'), lca.findNode('k')));
+		lca.addNode('a');
+		lca.addNode('d');
+		assertEquals("Should return c", lca.findNode('c'), lca.lowestCommonAncestor(lca.findNode('f'), lca.findNode('a'), lca.findNode('d')));
+		lca.addNode('v');
+		assertEquals("Should return head", lca.findNode('f'), lca.lowestCommonAncestor(lca.findNode('f'), lca.findNode('a'), lca.findNode('v')));
+	}
 }

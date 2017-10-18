@@ -97,6 +97,26 @@ public class LowestCommonAncestor {
 		return depth;
 	}
 	
+	
+	public Node lowestCommonAncestor(Node root, Node p, Node q) {
+	    if(root==null)
+	        return null;
+	 
+	    if(root==p || root==q)
+	        return root;
+	 
+	    Node l = lowestCommonAncestor(root.left, p, q);
+	    Node r = lowestCommonAncestor(root.right, p, q);
+	 
+	    if(l!=null&&r!=null){
+	        return root;
+	    }else if(l==null&&r==null){
+	        return null;
+	    }else{
+	        return l==null?r:l;
+	    }
+	}
+	
 
 	public String helloWorld(){
 		return "HelloWorld";
