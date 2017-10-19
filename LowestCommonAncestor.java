@@ -3,12 +3,14 @@ public class LowestCommonAncestor {
 	
 	public Node head;
 	
-	public class Node{
+	//Node class to represent Nodes of the binary tree with left, right and parent nodes as well as a key represented by a character
+	public class Node{  
 		private char c;
 		public Node left, right, parent;
 		private int n;
 	}
 	
+	//Creates a new binary tree with a head
 	public void createHead(char c){
 		Node head = new Node();
 		head.c = c;
@@ -22,6 +24,8 @@ public class LowestCommonAncestor {
 		return node.c;
 	}
 	
+	/*An add node function thats adds a node to the tree based on its 
+	key by recursively calling a private function */
 	public void addNode(char c){
 		Node newNode = new Node();
 		newNode.c = c;
@@ -51,6 +55,7 @@ public class LowestCommonAncestor {
 		}
 	}
 	
+	//A function to return a node given a key
 	public Node findNode(char c){
 		if(c == head.c){
 			return head;
@@ -97,7 +102,7 @@ public class LowestCommonAncestor {
 		return depth;
 	}
 	
-	
+	//An implementation of the Lowest Common Ancestor Algorithm 
 	public Node lowestCommonAncestor(Node root, Node p, Node q) {
 	    if(root==null)
 	        return null;
