@@ -1,4 +1,5 @@
 
+
 public class LowestCommonAncestor {
 	
 	public Node head;
@@ -127,13 +128,44 @@ public class LowestCommonAncestor {
 	    }
 	}
 	
+	public String prettyPrintKeys() {
+    	if (head == null){
+    		return "-null\n";
+    	}
+    	else if (head.left == null && head.right == null){
+    		return "-" + head.key + "\n" + " |-null\n" + "  -null\n";
+    	}
+    	return prettyPrintKeys(head,"");
+    }
+    
+    private String prettyPrintKeys(Node x,String prefix){
+    	if (x == null){
+    		return prefix + "-null\n";
+    	}
+    	if (x.left != null){
+    		return prefix + "-" + x.key + "\n" + prettyPrintKeys(x.left, prefix + " |") + prettyPrintKeys(x.right, prefix + "  ");
+    	}
+    	else if (x.left == null){
+    		return prefix + "-" + x.key + "\n" + prefix + " |" + "-null\n" + prettyPrintKeys(x.right,prefix + "  ");
+    	}
+    	return null;
+    }
+	
+	
 
 	public String helloWorld(){
 		return "HelloWorld";
 	}
 	
 	public static void main(String[] args) {
-
+		LowestCommonAncestor lca = new LowestCommonAncestor();
+		lca.createHead('e',0);
+		lca.addNode('b', 1);
+		lca.addNode('f', 1);
+		lca.addNode('a', 1);
+		lca.addNode('g', 1);
+		String tree = lca.prettyPrintKeys();
+		System.out.print(tree);
 	}
 
 }

@@ -80,4 +80,28 @@ public class LowestCommonAncestorTest {
 		lca.addNode('v',5);
 		assertEquals("Should return head", lca.findNode('f'), lca.lowestCommonAncestor(lca.findNode('f'), lca.findNode('a'), lca.findNode('v')));
 	}
+	
+	@Test 
+	public void testPrint(){
+		LowestCommonAncestor lca = new LowestCommonAncestor();
+		lca.createHead('e',0);
+		lca.addNode('b', 1);
+		lca.addNode('f', 1);
+		lca.addNode('a', 1);
+		lca.addNode('g', 1);
+		String tree = lca.prettyPrintKeys();
+		String result = 
+				"-e\n" +
+				" |-b\n" +
+				" | |-a\n" + 
+				" | | |-null\n" +
+				" | |  -null\n" +
+				" |  -null\n" +
+				"  -f\n" +
+				"   |-null\n" +
+				"    -g\n" +
+				"     |-null\n" +
+				"      -null\n";
+		assertEquals("Print Tree", result, tree);
+	}
 }
