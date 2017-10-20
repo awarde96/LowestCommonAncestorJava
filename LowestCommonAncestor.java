@@ -5,37 +5,42 @@ public class LowestCommonAncestor {
 	
 	//Node class to represent Nodes of the binary tree with left, right and parent nodes as well as a key represented by a character
 	public class Node{  
-		private char c;
+		private char key;
 		public Node left, right, parent;
-		private int n;
+		private int value;
 	}
 	
 	//Creates a new binary tree with a head
-	public void createHead(char c){
+	public void createHead(char key,int value){
 		Node head = new Node();
-		head.c = c;
+		head.key = key;
 		head.left = null;
 		head.right = null;
-		head.n = 0;
+		head.value = value;
 		this.head = head;
 	}
 	
 	public char returnKey(Node node){
-		return node.c;
+		return node.key;
+	}
+	
+	public int returnValue(Node node){
+		return node.value;
 	}
 	
 	/*An add node function thats adds a node to the tree based on its 
 	key by recursively calling a private function */
-	public void addNode(char c){
+	public void addNode(char key, int value){
 		Node newNode = new Node();
-		newNode.c = c;
+		newNode.key = key;
 		newNode.left = null;
 		newNode.right = null;	
+		newNode.value = value;
 		addNode(newNode, head);
 	}
 	
 	private void addNode(Node newNode, Node head){
-		if(newNode.c < head.c){
+		if(newNode.key < head.key){
 			if(head.left == null){
 				head.left = newNode;
 				newNode.parent = head;
@@ -56,34 +61,34 @@ public class LowestCommonAncestor {
 	}
 	
 	//A function to return a node given a key
-	public Node findNode(char c){
-		if(c == head.c){
+	public Node findNode(char key){
+		if(key == head.key){
 			return head;
 		}
 		else {
-			return findNode(c, head);
+			return findNode(key, head);
 		}
 	}
 	
-	private Node findNode(char c, Node head){
+	private Node findNode(char key, Node head){
 		Node ret = null;
 		if(head.left != null){
-			if (head.left.c == c){
+			if (head.left.key == key){
 				return head.left;
 			}
 			else{
-				ret = findNode(c, head.left);
+				ret = findNode(key, head.left);
 				if(ret != null){
 					return ret;
 				}
 			}
 		}
 		if(head.right != null){
-			if(head.right.c == c){
+			if(head.right.key == key){
 				return head.right;
 			}
 			else{
-				ret = findNode(c, head.right);
+				ret = findNode(key, head.right);
 				if(ret != null){
 					return ret;
 				}
@@ -92,9 +97,9 @@ public class LowestCommonAncestor {
 		return null;
 	}
 	
-	public int depth(char c){
+	public int depth(char key){
 		int depth = 0;
-		Node node = findNode(c);
+		Node node = findNode(key);
 		while(node.parent != null){
 			depth++;
 			node = node.parent;
@@ -128,7 +133,6 @@ public class LowestCommonAncestor {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
