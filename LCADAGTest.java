@@ -10,5 +10,14 @@ public class LCADAGTest {
 		tree.createHead(1, 'a');
 		assertEquals("Return head", 'a', tree.returnKey(tree.head));
 	}
+	
+	@Test
+	public void testAdd(){
+		LCADAG tree = new LCADAG();
+		tree.createHead(1,'a');
+		tree.addNode('b',2,tree.head);
+		assertEquals("Get first node added",'b',tree.returnKey(tree.head.children.get(0)));
+		
+	}
 
 }
