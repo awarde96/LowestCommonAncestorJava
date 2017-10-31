@@ -16,8 +16,18 @@ public class LCADAGTest {
 		LCADAG tree = new LCADAG();
 		tree.createHead(1,'a');
 		tree.addNode('b',2,tree.head);
-		assertEquals("Get first node added",'b',tree.returnKey(tree.head.children.get(0)));
-		
+		assertEquals("Get first node added",'b',tree.returnKey(tree.head.children.get(0)));		
+		tree.addNode('c', 3, tree.head.children.get(0));
+		assertEquals("Get second node added",'c',tree.returnKey(tree.head.children.get(0).children.get(0)));	
+	}
+	
+	@Test
+	public void testFind(){
+		LCADAG tree = new LCADAG();
+		tree.createHead(1,'a');
+		assertEquals("Find head",'a',tree.returnKey(tree.findNode('a')));
+		tree.addNode('b',2,tree.head);
+		assertEquals("Find new Node",'b',tree.returnKey(tree.findNode('b')));
 	}
 
 }

@@ -39,4 +39,35 @@ public class LCADAG {
 		parent.children.add(newNode);
 	}
 	
+	public Node findNode(char key){
+		Node ret;
+		if (key == head.key){
+			return head;
+		}
+		else{
+			for(int i = 0; i < head.children.size();i++){
+				ret = findNode(key,head.children.get(i));
+				if (ret != null){
+					return ret;
+				}
+			}
+		}
+		return null;
+	}
+	
+	private Node findNode(char key, Node node){
+		Node ret;
+		if(node.key == key){
+			return node;
+		}
+		else{
+			for(int i = 0; i < node.children.size();i++){
+				ret = findNode(key,head.children.get(i));
+				if (ret != null){
+					return ret;
+				}
+			}
+		}
+		return null;
+	}
 }
