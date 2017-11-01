@@ -6,6 +6,7 @@ public class LCADAG {
 	
 	public Node head;
 	
+	//Node class to represent nodes in graph
 	public class Node{
 		int value;
 		char key;
@@ -13,6 +14,7 @@ public class LCADAG {
 		List<Node> children = new ArrayList<Node>();
 	}
 
+	//a function to create the head node in graph
 	public void createHead(int value, char key){
 		Node head = new Node();
 		head.value = value;
@@ -30,6 +32,7 @@ public class LCADAG {
 		return newNode.key;
 	}
 	
+	//a function to add nodes to the graph
 	public void addNode(char key, int value,Node parent){
 		Node newNode = new Node();
 		newNode.key = key;
@@ -39,6 +42,7 @@ public class LCADAG {
 		parent.children.add(newNode);
 	}
 	
+	//a function to find nodes in a graph
 	public Node findNode(char key){
 		Node ret;
 		if (key == head.key){
@@ -71,7 +75,7 @@ public class LCADAG {
 		return null;
 	}
 	
-	
+	//An implementation of the Lowest common ancestor algorithm for a DAG
 	public Node LCA(Node start, Node p, Node q){
 		Node ret = null;
 		if (p.key == head.key || q.key == head.key){
