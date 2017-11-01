@@ -70,4 +70,31 @@ public class LCADAG {
 		}
 		return null;
 	}
+	
+	
+	public Node LCA(Node start, Node p, Node q){
+		Node ret = null;
+		if (p.key == start.key || q.key == start.key){
+			return start;
+		}
+		else{
+			Node tempp = findNode(p.key, start);
+			Node tempq = findNode(q.key, start);
+			if (tempp != null && tempq != null){
+				ret = start;
+				for(int i = 0; i < start.children.size();i++){
+					if (LCA(start.children.get(i),p,q) != null){
+						ret = LCA(start.children.get(i),p,q);
+					}
+				}				
+			}			
+		}
+		return ret;
+	}
 }
+
+
+
+
+
+
