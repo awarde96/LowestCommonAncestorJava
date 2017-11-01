@@ -62,7 +62,7 @@ public class LCADAG {
 		}
 		else{
 			for(int i = 0; i < node.children.size();i++){
-				ret = findNode(key,head.children.get(i));
+				ret = findNode(key,node.children.get(i));
 				if (ret != null){
 					return ret;
 				}
@@ -74,8 +74,8 @@ public class LCADAG {
 	
 	public Node LCA(Node start, Node p, Node q){
 		Node ret = null;
-		if (p.key == start.key || q.key == start.key){
-			return start;
+		if (p.key == head.key || q.key == head.key){
+			return head;
 		}
 		else{
 			Node tempp = findNode(p.key, start);
